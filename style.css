@@ -16,27 +16,6 @@ body {
     align-items: center;
 }
 
-/* Adicione estas classes para fazer a transição */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease-out;
-}
-
-.fade-in {
-    opacity: 1;
-    transition: opacity 0.5s ease-in;
-}
-
-.slide-out {
-    transform: translateY(-100%);
-    transition: transform 0.5s ease-out;
-}
-
-.slide-in {
-    transform: translateY(0);
-    transition: transform 0.5s ease-in;
-}
-
 #proxima-tela {
     display: none;
 }
