@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         $("#btn-iniciar").fadeIn(500).css("display", "flex");
-    }, 13000);
+    }, 13);
 });
 
 $(document).ready(function () {
     $("#btn-iniciar").click(function () {
         $(".main").css("display", "none");
-        $(".primeira-tela").css("display", "block"); // Adiciona a classe ativo para iniciar a transição
+        $(".primeira-tela").css("display", "flex", "!important"); // Adiciona a classe ativo para iniciar a transição
     });
 });
 

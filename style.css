@@ -1,19 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Righteous&display=swap');
+
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
 }
-.main{
+
+.main {
     width: 100vw;
     height: 100vh;
     background-image: url(./background.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 100vh; 
+    height: 100vh;
     display: flex;
-    justify-content: center; 
+    text-align: center;
+    justify-content: center;
     align-items: center;
+    display: none;
 }
 
 #proxima-tela {
@@ -23,10 +27,12 @@ body {
 h1 {
     font-size: 50px;
 }
+
 h3 {
     /* font-size: 20px; */
 }
-button {
+
+#btn-iniciar {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -38,9 +44,11 @@ button {
     justify-content: center;
     display: none;
 }
-button svg {
+
+#btn-iniciar svg {
     width: 20px;
 }
+
 .botao {
     width: 100%;
     margin: 0 auto;
@@ -49,11 +57,84 @@ button svg {
 
 }
 
-button:hover {
+#btn-iniciar:hover {
     background-color: #0056b3;
 }
 
 #result {
     margin-top: 20px;
     font-weight: bold;
+}
+
+/* segunda tela */
+
+.primeira-tela {
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.titulo {
+    width: 50%;
+}
+
+.titulo h1 {
+    font-size: 36px;
+    font-family: Righteous, sans-serif;
+    font-weight: 100;
+}
+
+.titulo h2 {
+    width: 80%;
+    font-size: 20px;
+    font-family: Lexend, sans-serif;
+    font-weight: 400;
+}
+.btns{
+    margin-top: 40px;
+}
+.btns button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calc-gif{
+    width: 400px;
+}
+
+/* terceira parte */
+.desafios{
+    width: 100vw;
+    height: 100vh;
+    background-color: #F6E6D9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.quis{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.resposta{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.positivo, .negativo{
+    cursor: pointer;
+}
+.card{
+    width: 300px;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-radius: 10px;
 }
