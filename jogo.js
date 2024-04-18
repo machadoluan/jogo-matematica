@@ -131,3 +131,5 @@ $(document).ready(function () {
     lifeElement.text(score);
     totalElement.text(numQuestions);
 });
+
+
