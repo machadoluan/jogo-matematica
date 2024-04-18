@@ -11,6 +11,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
             <h1>Preparado para começar o desafio?</h1>
             <h2>Neste jogo vamos testar sua capacidade de conhecimento em regras de sinais.</h2>
             <div class="btns">
-                <button>Continuar</button>
+                <button id="continuar">Continuar</button>
             </div>
         </div>
         <div class="img">
@@ -52,21 +53,47 @@
 
 
     <div class="desafios">
+        <div class="heart">
+            <img src="Heart.png" alt="" style="width: 35px;">
+            <span id="life"></span>
+        </div>
+        <div id="totalQuestions"><span id="total"></span></div>
         <div class="quis">
             <div class="expressao card">
-                <span>Expressão: 5 + (-10  )</span>
+                <span>Expressão: <span id="expressionText"></span></span>
             </div>
-            <div class="msg"><span>ERRO</span></div>
             <div class="resposta">
-                <div class="positivo card">Positivo +</div>
-                <div class="negativo card">Negativo-</div>
+                <div class="positivo card" id="positive">Positivo +</div>
+                <div class="negativo card" id="negative">Negativo -</div>
             </div>
+            <div class="msg"><span id="msg"></span></div>
+        </div>
+    </div>
+
+    <div class="modal-box">
+        <img src="triste.png" alt="" style="width: 100px;">
+        <h2>Fim de jogo</h2>
+        <h3>Você perdeu! se quiser pode refazer novamente.</h3>
+        <div class="buttons">
+            <button class="close-btn">Sair</button>
+            <button id="jogar-dnv">Jogar de novo</button>
+        </div>
+    </div>
+
+    <div class="venceu">
+        <img src="feliz.png" alt="" style="width: 100px;">
+        <h2>Parabéns</h2>
+        <h3>Você ganhou! se quiser pode refazer novamente.</h3>
+        <div class="buttons">
+            <button class="close-btn">Sair</button>
+            <button id="jogar-dnv2">Jogar de novo</button>
         </div>
     </div>
 
 
 
     <script src="app.js"></script>
+    <script src="jogo.js"></script>
 </body>
 
 </html>

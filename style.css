@@ -17,7 +17,7 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
-    display: none;
+    
 }
 
 #proxima-tela {
@@ -91,9 +91,11 @@ h3 {
     font-family: Lexend, sans-serif;
     font-weight: 400;
 }
-.btns{
+
+.btns {
     margin-top: 40px;
 }
+
 .btns button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -103,12 +105,12 @@ h3 {
     cursor: pointer;
 }
 
-.calc-gif{
+.calc-gif {
     width: 400px;
 }
 
 /* terceira parte */
-.desafios{
+.desafios {
     width: 100vw;
     height: 100vh;
     background-color: #F6E6D9;
@@ -116,25 +118,157 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 9999;
+    display: none;
+
 }
-.quis{
+#totalQuestions{
+    margin-left: 00px;
+    margin-bottom: 15px;
+}
+#total{
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+}
+.quis {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2rem;
 }
-.resposta{
+
+.resposta {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-.positivo, .negativo{
+
+.positivo,
+.negativo {
     cursor: pointer;
+    transition: all 3s ease-in-out;
 }
-.card{
+.positivo:hover ,
+.negativo:hover {
+    border: 1px solid #0056b3;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.card {
     width: 300px;
     padding: 15px 20px;
     background-color: #fff;
     border-radius: 10px;
+}
+
+.heart{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#msg{
+    padding: 5px 10px;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    display: none;
+}
+
+.modal-box {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+.venceu {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.modal-box h2 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+.venceu h2 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.modal-box h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.venceu h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.modal-box .buttons {
+    margin-top: 20px;
+}
+.venceu .buttons {
+    margin-top: 20px;
+}
+
+.modal-box .buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.3s;
+}
+.venceu .buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.modal-box .buttons button:hover {
+    background-color: #2980b9;
+}
+.venceu.buttons button:hover {
+    background-color: #2980b9;
+}
+
+.close-btn {
+    background-color: #e74c3c;
+}
+
+.close-btn:hover {
+    background-color: #c0392b;
 }
