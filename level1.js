@@ -1,10 +1,9 @@
 $(document).ready(function () {
     const expressions = [
-        "3 + ( - 4 )",
-        "2 +( - 5 )",
-        "8 + ( + 2 )",
-        "6 - ( - 2 )",
-        "5 +( + 3 )"
+        ["+", "(+)"],
+        ["+", "(-)"],
+        ["-", "(+)"],
+        ["-", "(-)"]
     ];
 
     const numQuestions = expressions.length; // Número total de questões
@@ -15,41 +14,45 @@ $(document).ready(function () {
     const expressionTextElement = $("#expressionText");
     const totalElement = $("#total");
     const msg = $("#msg");
-    const popup = $(".modal-box ");
     const btnjogardnv = $("#jogar-dnv");
-    const btnjogardnv2 = $("#jogar-dnv2");
     const btnsair = $(".close-btn");
 
     function displayExpression() {
-        expressionTextElement.text(expressions[currentExpressionIndex]);
+        const expression = expressions[currentExpressionIndex];
+        expressionTextElement.text(expression[0] + " " + expression[1]);
     }
 
     function checkAnswer(answer) {
         const expression = expressions[currentExpressionIndex];
-        const expectedResult = eval(expression); // Avalia a expressão para obter o resultado esperado
+        const operator = expression[0];
+        const operand = expression[1];
+        const expectedResult = calculateResult(operator, operand);
+
         if ((expectedResult > 0 && answer === "positive") || (expectedResult < 0 && answer === "negative")) {
+            // Resposta correta
             msg.text("Parabéns você acertou! Veja a próxima expressão...");
             msg.css("display", "block");
             msg.css("background-color", "green");
 
             setTimeout(function () {
-                msg.text(""); // Limpa a mensagem após 3 segundos
+                msg.text(""); // Limpa a mensagem após 2 segundos
                 msg.css("display", "none");
-            }, 2000); // 3000 milissegundos = 3 segundos
+            }, 2000);
 
             currentExpressionIndex++;
 
             if (currentExpressionIndex === numQuestions) {
-                $(".venceu").fadeIn();
+                $(".proximo").fadeIn();
                 resetGame();
             } else {
                 displayExpression();
                 updateTotalQuestions(); // Atualiza a contagem de questões restantes
             }
         } else {
+            // Resposta incorreta
             score--;
             if (score <= 0) {
-                popup.fadeIn();
+                $(".modal-box").fadeIn()
                 $(".desafios").css({
                     "background-color": "rgba(0, 0, 0, 0.8)", // Cor de fundo semi-transparente
                     "backdrop-filter": "blur(5px)" // Aplica um efeito de desfoque
@@ -61,7 +64,7 @@ $(document).ready(function () {
                 msg.css("display", "block");
                 msg.css("background-color", "red");
                 setTimeout(function () {
-                    msg.text(""); // Limpa a mensagem após 3 segundos
+                    msg.text(""); // Limpa a mensagem após 2 segundos
                     msg.css("display", "none");
                 }, 2000);
             }
@@ -81,24 +84,30 @@ $(document).ready(function () {
         totalElement.text(remainingQuestions);
     }
 
+    function calculateResult(operator, operand) {
+        switch (operator) {
+            case "+":
+                return operand === "(+)" ? 1 : -1;
+            case "-":
+                return operand === "(+)" ? -1 : 1;
+            default:
+                return 0;
+        }
+    }
+
     btnjogardnv.click(function () {
-        console.log("teste");
         resetGame();
         $(".desafios").css({
             "background-color": "#F6E6D9", // Cor de fundo semi-transparente
         });
-        popup.fadeOut();
-        $(".venceu").fadeOut();
-    });
-    btnjogardnv2.click(function () {
-        console.log("teste");
-        resetGame();
-        $(".desafios").css({
-            "background-color": "#F6E6D9", // Cor de fundo semi-transparente
-        });
-        $(".venceu").fadeOut();
+        $(".modal-box").fadeOut()
     });
 
+    $(".jogarDenovo").click(function (){
+        resetGame();
+        $(".proximo").fadeOut()
+
+    })
     btnsair.click(function () {
         $(".desafios").css({
             "display": "none",
@@ -107,8 +116,9 @@ $(document).ready(function () {
         $(".main").css({
             "display": "flex", // Cor de fundo semi-transparente
         });
-        popup.fadeOut();
-        $(".venceu").fadeOut();
+        $(".proximo").css("display", "none");
+        $(".modal-box").fadeOut()
+
     });
 
     $("#continuar").click(function () {
@@ -118,6 +128,16 @@ $(document).ready(function () {
 
         $(".primeira-tela").css("display", "none");
     });
+
+    $("#proximo-nivel").click(function (){
+        $(".desafios").css({
+            "display": "none", // Cor de fundo semi-transparente
+        });
+        $(".level2").css({
+            "display": "flex", // Cor de fundo semi-transparente
+        });
+        $(".proximo").fadeOut()
+    })
 
     $("#positive").click(function () {
         checkAnswer("positive");
@@ -131,5 +151,8 @@ $(document).ready(function () {
     lifeElement.text(score);
     totalElement.text(numQuestions);
 });
+
+
+
 
 

@@ -36,3 +36,7 @@ $(document).ready(function () {
     });
 });
 
+
+
+
+// Função para gerar confetes
