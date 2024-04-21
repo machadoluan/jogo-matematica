@@ -53,10 +53,7 @@ $(document).ready(function () {
             score--;
             if (score <= 0) {
                 $(".modal-box").fadeIn()
-                $(".desafios").css({
-                    "background-color": "rgba(0, 0, 0, 0.8)", // Cor de fundo semi-transparente
-                    "backdrop-filter": "blur(5px)" // Aplica um efeito de desfoque
-                });
+
                 resetGame();
             } else {
                 lifeElement.text(score);
@@ -95,7 +92,7 @@ $(document).ready(function () {
         }
     }
 
-    btnjogardnv.click(function () {
+    $("#jogar-dnv7").click(function () {
         resetGame();
         $(".desafios").css({
             "background-color": "#F6E6D9", // Cor de fundo semi-transparente
