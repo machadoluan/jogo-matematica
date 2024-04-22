@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 100,
         startDelay: 900,
     })
-        .type("jogo de atematica", { delay: 100 })
+        .type("jogo de atemática", { delay: 100 })
         .move(-9, { delay: 100 })
         .type("M", { delay: 400 })
         .move(-8, { delay: 300 })
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             speed: 100,
             loop: false,
         })
-            .type('Professor: Adeli Cristiano ', { delay: 900 })
+            .type('Professor: Cristiano ', { delay: 900 })
             .go();
     }, 9000);
 
