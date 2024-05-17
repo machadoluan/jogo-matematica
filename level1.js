@@ -6,7 +6,7 @@ $(document).ready(function () {
         ["-", "(-)"]
     ];
 
-    const numQuestions = expressions.length; // Número total de questões
+    const numQuestions = expressions.length;
     let score = 3;
     let currentExpressionIndex = 0;
 
@@ -28,43 +28,42 @@ $(document).ready(function () {
         const operand = expression[1];
         const expectedResult = calculateResult(operator, operand);
 
-        if ((expectedResult > 0 && answer === "positive") || (expectedResult < 0 && answer === "negative")) {
+        let correctAnswer = expectedResult > 0 ? "positive" : "negative";
+
+        if (correctAnswer === answer) {
             // Resposta correta
-            msg.text("Parabéns você acertou! Veja a próxima expressão...");
-            msg.css("display", "block");
-            msg.css("background-color", "green");
+            $(`#${answer}`).addClass("correct");
 
             setTimeout(function () {
-                msg.text(""); // Limpa a mensagem após 2 segundos
-                msg.css("display", "none");
-            }, 2000);
+                $(`#${answer}`).removeClass("correct");
 
-            currentExpressionIndex++;
+                currentExpressionIndex++;
 
-            if (currentExpressionIndex === numQuestions) {
-                $(".proximo").fadeIn();
-                resetGame();
-            } else {
-                displayExpression();
-                updateTotalQuestions(); // Atualiza a contagem de questões restantes
-            }
+                if (currentExpressionIndex === numQuestions) {
+                    $(".proximo").fadeIn();
+                    resetGame();
+                } else {
+                    displayExpression();
+                    updateTotalQuestions();
+                }
+            }, 500);
         } else {
             // Resposta incorreta
-            score--;
-            if (score <= 0) {
-                $(".modal-box").fadeIn()
+            $(`#${answer}`).addClass("wrong");
+            $(`#${correctAnswer}`).addClass("correct");
 
-                resetGame();
-            } else {
-                lifeElement.text(score);
-                msg.text("Resposta errada, Tente novamente.");
-                msg.css("display", "block");
-                msg.css("background-color", "red");
-                setTimeout(function () {
-                    msg.text(""); // Limpa a mensagem após 2 segundos
-                    msg.css("display", "none");
-                }, 2000);
-            }
+            setTimeout(function () {
+                $(`#${answer}`).removeClass("wrong");
+                $(`#${correctAnswer}`).removeClass("correct");
+
+                score--;
+                if (score <= 0) {
+                    $(".modal-box").fadeIn();
+                    resetGame();
+                } else {
+                    lifeElement.text(score);
+                }
+            }, 2000);
         }
     }
 
@@ -73,7 +72,7 @@ $(document).ready(function () {
         currentExpressionIndex = 0;
         lifeElement.text(score);
         displayExpression();
-        totalElement.text(numQuestions); // Exibe novamente o número total de questões
+        totalElement.text(numQuestions);
     }
 
     function updateTotalQuestions() {
@@ -95,46 +94,44 @@ $(document).ready(function () {
     $("#jogar-dnv7").click(function () {
         resetGame();
         $(".desafios").css({
-            "background-color": "#F6E6D9", // Cor de fundo semi-transparente
+            "background-color": "#F6E6D9",
         });
-        $(".modal-box").fadeOut()
+        $(".modal-box").fadeOut();
     });
 
-    $(".jogarDenovo").click(function (){
+    $(".jogarDenovo").click(function () {
         resetGame();
-        $(".proximo").fadeOut()
+        $(".proximo").fadeOut();
+    });
 
-    })
     btnsair.click(function () {
         $(".desafios").css({
             "display": "none",
-            "background-color": "#F6E6D9" // Cor de fundo semi-transparente
+            "background-color": "#F6E6D9"
         });
         $(".main").css({
-            "display": "flex", // Cor de fundo semi-transparente
+            "display": "flex",
         });
         $(".proximo").css("display", "none");
-        $(".modal-box").fadeOut()
-
+        $(".modal-box").fadeOut();
     });
 
     $("#continuar").click(function () {
         $(".desafios").css({
-            "display": "flex", // Cor de fundo semi-transparente
+            "display": "flex",
         });
-
         $(".primeira-tela").css("display", "none");
     });
 
-    $("#proximo-nivel").click(function (){
+    $("#proximo-nivel").click(function () {
         $(".desafios").css({
-            "display": "none", // Cor de fundo semi-transparente
+            "display": "none",
         });
         $(".level2").css({
-            "display": "flex", // Cor de fundo semi-transparente
+            "display": "flex",
         });
-        $(".proximo").fadeOut()
-    })
+        $(".proximo").fadeOut();
+    });
 
     $("#positive").click(function () {
         checkAnswer("positive");
@@ -148,8 +145,3 @@ $(document).ready(function () {
     lifeElement.text(score);
     totalElement.text(numQuestions);
 });
-
-
-
-
-

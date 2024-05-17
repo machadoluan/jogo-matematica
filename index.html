@@ -58,7 +58,7 @@
             <span id="level">Nivel 1</span>
         </div>
         <div class="heart">
-            <img src="Heart.png" alt="" style="width: 35px;">
+            <img src="Heart.png" style="width: 35px;">
             <span id="life"></span>
         </div>
         <div class="quis">
@@ -88,7 +88,9 @@
     <div class="proximo">
         <img src="feliz.png" alt="" style="width: 100px;">
         <h2>Parabéns</h2>
-        <h3>Você acertou todas! <br> preparado para ir para o proximo nivel?</h3>
+        <h3>preparado para ir para o proximo nivel?</h3>
+        <h5>Resultado:</h5>
+        <span id="result"></span>
         <div class="buttons">
             <button class="jogarDenovo">Tentar de novo</button>
             <button id="proximo-nivel">Proximo nivel</button>
@@ -105,6 +107,7 @@
             <span id="life2"></span>
         </div>
         <div class="quis">
+            <span id="numeroQuestao"></span>
             <div class="expressao card2">
                 <span><span id="expressionText2"></span></span>
             </div>
@@ -121,6 +124,8 @@
         <img src="feliz.png" alt="" style="width: 100px;">
         <h2>Parabéns</h2>
         <h3>Você zerou o game! Se quiser pode jogar novamente.</h3>
+        <h2>Resultado</h2>
+        <p class="resultado"></p>
         <div class="buttons">
             <button class="close-btn3">Sair</button>
             <button id="jogar-dnv3">Jogar novamente</button>
@@ -131,18 +136,28 @@
         <img src="triste.png" alt="" style="width: 100px;">
         <h2>Fim de jogo</h2>
         <h3>Você perdeu! se quiser pode refazer novamente.</h3>
+
         <div class="buttons">
             <button class="close-btn2">Sair</button>
             <button id="jogar-dnv2">Jogar de novo</button>
         </div>
     </div>
-    
+
+    <div class="modal-resultado">
+        <div class="modal-content-resultado">
+            <span class="close-btn-resultado" id="close">&times;</span>
+
+        </div>
+    </div>
 
 
-    
+
+
+
     <script src="app.js"></script>
     <script src="level1.js"></script>
     <script src="level2.js"></script>
+    <script src="level3.js"></script>
     <script src="confetti.js"></script>
 </body>
 

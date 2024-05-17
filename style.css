@@ -73,6 +73,15 @@ h3 {
     width: 20px;
 }
 
+.nome{
+    margin-top: 50px;
+}
+.nome input{
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+
 .botao {
     width: 100%;
     margin: 0 auto;
@@ -333,4 +342,52 @@ h3 {
 
 .close-btn:hover {
     background-color: #c0392b;
+}
+
+.modal-resultado {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-resultado {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close-btn-resultado {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn-resultado:hover,
+.close-btn-resultado:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.correct {
+    background-color: green !important;
+    color: white !important;
+}
+
+.wrong {
+    background-color: red !important;
+    color: white !important;
 }

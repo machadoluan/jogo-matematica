@@ -24,16 +24,46 @@ $(document).ready(function () {
             questao: "Qual é o resultado da operação: -3 + (-4)?",
             respostas: ["12", "-12", "-7"],
             respostaCorreta: "-7"
+        },
+        {
+            questao: "Qual é o resultado da operação: 10 * (-2)?",
+            respostas: ["-20", "20", "0"],
+            respostaCorreta: "-20"
+        },
+        {
+            questao: "Qual é o resultado da operação: 25 / (-5)?",
+            respostas: ["-5", "5", "0"],
+            respostaCorreta: "-5"
+        },
+        {
+            questao: "Qual é o resultado da operação: 3 + 2 * 4?",
+            respostas: ["20", "11", "15"],
+            respostaCorreta: "11"
+        },
+        {
+            questao: "Qual é o resultado da operação: (8 - 3) * 2?",
+            respostas: ["10", "5", "6"],
+            respostaCorreta: "10"
+        },
+        {
+            questao: "Qual é o resultado da operação: 9 / 3 - 1?",
+            respostas: ["3", "6", "2"],
+            respostaCorreta: "2"
         }
     ];
 
     let currentQuestion = 0;
     let vida = 3;
+    let numeroQuestao = 1;
+    let respostasCorretas = 0;
+    let respostasIncorretas = 0;
     $("#life2").text(vida);
 
     // Função para exibir a próxima pergunta
     function showNextQuestion() {
         if (currentQuestion < perguntas.length) {
+            $("#numeroQuestao").text(numeroQuestao + "/" + perguntas.length);
+            numeroQuestao++;
             $("#expressionText2").text(perguntas[currentQuestion].questao);
             $("#respota1").text(perguntas[currentQuestion].respostas[0]);
             $("#resposta2").text(perguntas[currentQuestion].respostas[1]);
@@ -42,13 +72,8 @@ $(document).ready(function () {
             if (vida === 0) {
                 $(".modal-box").fadeIn();
             } else {
-               $(".venceu").fadeIn()
-                const start = () => {
-                    setTimeout(function () {
-                        confetti.start();
-                    });
-                };
-                start();
+                resultado()
+
             }
         }
     }
@@ -59,11 +84,12 @@ $(document).ready(function () {
             $("#msg2").text("Parabéns você acertou! Veja a próxima questão...");
             $("#msg2").css("display", "block");
             $("#msg2").css("background-color", "green");
-    
+
             setTimeout(function () {
                 $("#msg2").text(""); // Limpa a mensagem após 2 segundos
                 $("#msg2").css("display", "none");
             }, 2000);
+            respostasCorretas++
         } else {
             vida--;
             $("#life2").text(vida);
@@ -83,11 +109,13 @@ $(document).ready(function () {
                 showNextQuestion()
                 return;
             }
+
+            respostasIncorretas++
         }
         currentQuestion++;
         showNextQuestion();
     }
-    
+
 
     // Adicionando evento de clique às respostas
     $(document).on("click", "#respota1", function () {
@@ -102,13 +130,40 @@ $(document).ready(function () {
         checkAnswer(2);
     });
 
+
     function resetGame() {
         currentQuestion = 0;
         vida = 3;
+        numeroQuestao = 1;
+        respostasCorretas = 0
+        respostasIncorretas = 0;
+
         $("#life2").text(vida);
         $("#msg2").text("");
         showNextQuestion();
     }
+
+    function resultado() {
+        // Aguardar um curto período de tempo para simular o cálculo dos resultados
+        setTimeout(function () {
+            // Esconder loading
+            $("#loading").fadeOut();
+
+            // Exibir pop-up com o resultado
+            $("#life2").text(vida);
+            $("#msg2").text("");
+
+            $(".venceu").fadeIn();
+            $(".resultado").text("Você acertou " + respostasCorretas + " perguntas e errou " + respostasIncorretas + ".");
+            const start = () => {
+                setTimeout(function () {
+                    confetti.start();
+                });
+            };
+            start();
+        }, 1000); // Tempo em milissegundos (1 segundo)
+    }
+
 
 
     $(".close-btn2").click(function () {
@@ -126,6 +181,8 @@ $(document).ready(function () {
             })
         }
         stop()
+
+        localStorage.removeItem("nome")
     })
     $(".close-btn3").click(function () {
         $(".level2").css({
@@ -142,11 +199,23 @@ $(document).ready(function () {
             })
         }
         stop()
+
+        localStorage.removeItem("nome")
     })
 
     $("#jogar-dnv2").click(function () {
         resetGame()
         $(".modal-box").fadeOut()
+        const stop = () => {
+            setTimeout(function () {
+                confetti.stop();
+            })
+        }
+        stop()
+    })
+    $(".close-btn-resultado").click(function () {
+        resetGame()
+        $(".modal-resultado").fadeOut()
         const stop = () => {
             setTimeout(function () {
                 confetti.stop();
