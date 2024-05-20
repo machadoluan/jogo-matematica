@@ -3,16 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 100,
         startDelay: 900,
     })
-        .type("jogo de atemática", { delay: 100 })
-        .move(-9, { delay: 100 })
-        .type("M", { delay: 400 })
-        .move(-8, { delay: 300 })
-        .delete(1)
-        .type("J", { delay: 225 })
-        .pause(200)
-        .move(18, { delay: 300 })
-        .type("!", { delay: 225 })
-        .pause(2000)
+        .type("Jogo de Matemática", { delay: 100 })
         .go();
 
     setTimeout(() => {
@@ -22,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .type('Professor: Cristiano ', { delay: 900 })
             .go();
-    }, 9000);
+    }, 5000);
 
     setTimeout(() => {
         $("#btn-iniciar").fadeIn(500).css("display", "flex");
-    }, 13000);
+    }, 7000);
 });
 
 $(document).ready(function () {
