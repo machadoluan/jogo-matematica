@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         $("#btn-iniciar").fadeIn(500).css("display", "flex");
-    }, 7000);
+    }, 13000);
 });
 
 $(document).ready(function () {
