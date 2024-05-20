@@ -7,13 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
         .go();
 
     setTimeout(() => {
+        new TypeIt('#alunos', {
+            speed: 100,
+            loop: false,
+        })
+            .type('Grupo: Luan | Luis | Isadora | André', { delay: 900 })
+            .go();
+    }, 5000);
+
+    setTimeout(() => {
         new TypeIt('#professor', {
             speed: 100,
             loop: false,
         })
             .type('Professor: Cristiano ', { delay: 900 })
             .go();
-    }, 5000);
+    }, 10000);
 
     setTimeout(() => {
         $("#btn-iniciar").fadeIn(500).css("display", "flex");
